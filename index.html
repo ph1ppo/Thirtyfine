@@ -1,295 +1,826 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Честит Рожден Ден, Любов ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Честит Рожден Ден, Любов ❤️</title>
+  <style>
+    :root{
+      --cream:#fff7ef;
+      --panelTop:rgba(67,31,54,.42);
+      --panelBottom:rgba(42,19,34,.42);
+      --glass:rgba(255,255,255,.08);
+      --glass-strong:rgba(255,255,255,.12);
+      --glass-border:rgba(255,255,255,.16);
+      --text-soft:#ffe7bf;
+      --theme-side:#2b1627;
+      --shadow:0 20px 50px rgba(0,0,0,.28);
+    }
 
-<style>
-:root{
-  --cream:#fff7ef;
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%}
 
-  /* 👉 по-прозрачни панели */
-  --panel1:rgba(67,31,54,.45);
-  --panel2:rgba(42,19,34,.45);
+    body{
+      font-family:"Avenir Next","Segoe UI","Trebuchet MS",Arial,sans-serif;
+      color:var(--cream);
+      background-color:var(--theme-side);
+      background-image:
+        linear-gradient(rgba(31,14,28,.28), rgba(31,14,28,.34)),
+        url("Frontpage.jpeg");
+      background-repeat:no-repeat,no-repeat;
+      background-position:center center, center center;
+      background-size:100% 100%, contain;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
 
-  --glass: rgba(255,255,255,.08);
-  --glass-border: rgba(255,255,255,.15);
-}
+    .page{
+      display:none;
+      min-height:100vh;
+      min-height:100svh;
+    }
+    .page.active{display:block}
 
-*{box-sizing:border-box}
-html,body{margin:0;height:100%}
+    .wrap{
+      min-height:100vh;
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
 
-body{
-  font-family:"Avenir Next","Segoe UI",Arial;
-  color:var(--cream);
+    .panel{
+      width:min(1080px,100%);
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      background:linear-gradient(180deg,var(--panelTop),var(--panelBottom));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
 
-  background:
-    linear-gradient(rgba(31,14,28,.25), rgba(31,14,28,.3)),
-    url("Frontpage.jpeg") center/contain no-repeat;
+    .panel::before,
+    .panel::after{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      pointer-events:none;
+      opacity:.55;
+      z-index:0;
+      background:
+        radial-gradient(circle at 40% 55%, rgba(240,215,159,.9) 0 7px, transparent 8px),
+        radial-gradient(circle at 55% 40%, rgba(216,176,102,.95) 0 13px, transparent 14px),
+        radial-gradient(circle at 70% 65%, rgba(143,129,189,.55) 0 28px, transparent 29px),
+        linear-gradient(130deg, transparent 44%, rgba(216,176,102,.85) 45%, rgba(216,176,102,.85) 47%, transparent 48%),
+        linear-gradient(35deg, transparent 44%, rgba(216,176,102,.65) 45%, rgba(216,176,102,.65) 47%, transparent 48%);
+    }
+    .panel::before{top:0;left:0}
+    .panel::after{right:0;bottom:0;transform:scaleX(-1) rotate(180deg)}
 
-  background-color:#2b1627;
-}
+    .content{
+      position:relative;
+      z-index:1;
+      padding:28px;
+    }
 
-/* ===== PAGES ===== */
-.page{display:none;min-height:100vh}
-.page.active{display:block}
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:13px 22px;
+      font-size:1rem;
+      font-weight:700;
+      cursor:pointer;
+      color:#fff7ef;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.16);
+      transition:transform .18s ease, opacity .18s ease, background .18s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.gold{
+      color:#5c1f2b;
+      background:linear-gradient(180deg,#f0d79f,#d8b066);
+      border:none;
+    }
 
-.wrap{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:100vh;
-  padding:20px;
-}
+    .top-audio{
+      position:absolute;
+      top:16px;
+      right:16px;
+      z-index:5;
+    }
 
-/* ===== MAIN PANEL ===== */
-.panel{
-  width:100%;
-  max-width:900px;
+    input{
+      width:min(320px,90vw);
+      padding:14px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:1rem;
+      outline:none;
+    }
 
-  background:linear-gradient(180deg,var(--panel1),var(--panel2));
+    .lock-box{
+      text-align:center;
+      padding:42px 22px;
+    }
 
-  border-radius:24px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+    .lock-box h1{
+      margin:0 0 12px;
+      font-size:clamp(2rem,5vw,3.4rem);
+      color:#f8e2ba;
+    }
 
-  border:1px solid rgba(255,255,255,.2);
-  box-shadow:0 20px 50px rgba(0,0,0,.3);
-}
+    .lock-box p{
+      margin:0 0 20px;
+      font-size:1.08rem;
+      line-height:1.7;
+    }
 
-.content{padding:24px}
+    .row{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
 
-/* ===== BUTTONS ===== */
-.btn{
-  padding:12px 20px;
-  border-radius:999px;
-  border:none;
-  cursor:pointer;
-  font-weight:600;
-  background:rgba(255,255,255,.15);
-  color:white;
-}
+    .error{
+      color:#ffd2d2;
+      min-height:24px;
+      margin-top:12px;
+    }
 
-/* ===== INPUT ===== */
-input{
-  padding:12px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.1);
-  color:white;
-}
+    /* Gift page */
+    .front-stage{
+      min-height:100vh;
+      min-height:100svh;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      padding:40px 20px max(40px, env(safe-area-inset-bottom));
+    }
 
-/* ===== STORY ===== */
-.story-article{
-  background: var(--glass);
-  backdrop-filter: blur(10px);
-  border:1px solid var(--glass-border);
-  border-radius:20px;
-  padding:20px;
-  line-height:1.8;
-}
+    .gift{
+      position:relative;
+      width:112px;
+      height:128px;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      padding:0;
+      appearance:none;
+      -webkit-tap-highlight-color:transparent;
+    }
 
-.story-head{
-  text-align:center;
-  font-size:1.6rem;
-  margin-bottom:20px;
-}
+    .gift:hover{transform:translateY(-2px)}
 
-.photo-slot{
-  width:45%;
-  border-radius:14px;
-  overflow:hidden;
-  margin:10px;
-  opacity:0;
-  transform:translateY(10px);
-  transition:.6s;
-}
-.photo-slot.show{opacity:1;transform:none}
+    .gift-box{
+      position:absolute;
+      left:50%;
+      bottom:0;
+      transform:translateX(-50%);
+      width:88px;
+      height:70px;
+      border-radius:11px;
+      background:
+        linear-gradient(180deg,#d94f5f 0%, #ba2d3c 52%, #8d1e2b 100%);
+      box-shadow:
+        inset 0 3px 0 rgba(255,255,255,.18),
+        inset 0 -8px 14px rgba(0,0,0,.18),
+        0 14px 28px rgba(0,0,0,.28);
+      border:1px solid rgba(255,240,220,.22);
+    }
 
-.float-left{float:left}
-.float-right{float:right}
+    .gift-lid{
+      position:absolute;
+      left:50%;
+      bottom:63px;
+      transform:translateX(-50%);
+      width:98px;
+      height:18px;
+      border-radius:10px;
+      background:
+        linear-gradient(180deg,#e46473 0%, #bf3140 58%, #9b2230 100%);
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.18),
+        0 8px 16px rgba(0,0,0,.18);
+      border:1px solid rgba(255,240,220,.2);
+    }
 
-.clear{clear:both}
+    .ribbon-v{
+      position:absolute;
+      left:50%;
+      bottom:0;
+      transform:translateX(-50%);
+      width:14px;
+      height:88px;
+      border-radius:8px;
+      background:linear-gradient(180deg,#ffe6bf 0%, #efc988 48%, #dca85b 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.45);
+    }
 
-/* ===== TRAVEL ===== */
-.direction-btn,
-.answer-btn{
-  width:100%;
-  padding:14px;
-  margin:6px 0;
+    .ribbon-h{
+      position:absolute;
+      left:50%;
+      bottom:27px;
+      transform:translateX(-50%);
+      width:88px;
+      height:14px;
+      border-radius:8px;
+      background:linear-gradient(180deg,#ffe6bf 0%, #efc988 48%, #dca85b 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.45);
+    }
 
-  background: var(--glass);
-  border:1px solid var(--glass-border);
-  border-radius:14px;
-  color:white;
-}
+    .bow-center{
+      position:absolute;
+      left:50%;
+      bottom:77px;
+      transform:translateX(-50%);
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:linear-gradient(180deg,#ffe8c4 0%, #eabf77 100%);
+      z-index:2;
+      box-shadow:0 4px 10px rgba(0,0,0,.18);
+    }
 
-/* ===== TICKETS ===== */
-.ticket-card{
-  background: var(--glass);
-  border:1px solid var(--glass-border);
-  border-radius:20px;
-  padding:12px;
-  margin-top:20px;
-  backdrop-filter: blur(10px);
-}
+    .bow-left,.bow-right{
+      position:absolute;
+      bottom:82px;
+      width:30px;
+      height:22px;
+      border:5px solid #f0c980;
+      border-radius:50%;
+      z-index:1;
+    }
+    .bow-left{left:20px;transform:rotate(-20deg)}
+    .bow-right{right:20px;transform:rotate(20deg)}
 
-/* ===== TEXT ===== */
-.travel-text{
-  margin-top:16px;
-  line-height:1.8;
-  white-space:pre-wrap;
-}
+    /* Story page */
+    .story-article{
+      background:var(--glass);
+      border:1px solid var(--glass-border);
+      border-radius:24px;
+      padding:28px;
+      line-height:1.95;
+      font-size:1.08rem;
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
 
-/* ===== MOBILE ===== */
-@media(max-width:700px){
-  .photo-slot{width:100%;float:none}
-}
-</style>
+    .story-head{
+      font-size:clamp(1.6rem,3vw,2.4rem);
+      font-weight:800;
+      text-align:center;
+      margin:0 0 22px;
+      color:#ffe2b7;
+    }
+
+    .story-text p{margin:0 0 18px}
+
+    .photo-slot{
+      width:min(300px,42%);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 14px 34px rgba(0,0,0,.25);
+      border:1px solid rgba(255,240,220,.16);
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .8s ease, transform .8s ease;
+      background:rgba(255,255,255,.06);
+    }
+    .photo-slot.show{opacity:1;transform:translateY(0)}
+    .photo-slot img{display:block;width:100%;height:auto}
+    .float-right{float:right;margin:8px 0 16px 20px}
+    .float-left{float:left;margin:8px 20px 16px 0}
+    .clear{clear:both}
+    .bottom-center{display:flex;justify-content:center;margin-top:26px;clear:both}
+    .continue-holder{padding-top:12px;clear:both}
+
+    /* Third page */
+    .travel-question{
+      font-size:clamp(1.8rem,3.4vw,2.7rem);
+      line-height:1.25;
+      color:var(--text-soft);
+      text-align:center;
+      margin:0 0 18px;
+    }
+
+    .temp-msg{
+      min-height:28px;
+      text-align:center;
+      color:var(--text-soft);
+      opacity:0;
+      transition:opacity .25s ease;
+      margin-bottom:18px;
+    }
+    .temp-msg.show{opacity:1}
+
+    .direction-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      max-width:420px;
+      margin:0 auto 24px;
+    }
+
+    .direction-btn,
+    .answer-btn{
+      width:100%;
+      min-height:52px;
+      padding:14px 18px;
+      border:none;
+      border-radius:16px;
+      font-size:1rem;
+      font-weight:700;
+      cursor:pointer;
+      background:var(--glass);
+      color:#fff7ef;
+      border:1px solid var(--glass-border);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .travel-block{
+      display:none;
+      margin-top:16px;
+    }
+    .travel-block.show-now{display:block}
+
+    .reveal-intro{
+      text-align:center;
+      color:var(--text-soft);
+      font-size:1.12rem;
+      line-height:1.8;
+      margin:8px 0 6px;
+    }
+
+    .ticket-card{
+      background:var(--glass);
+      border:1px solid var(--glass-border);
+      border-radius:24px;
+      padding:16px;
+      box-shadow:0 20px 50px rgba(0,0,0,.22);
+      margin-top:18px;
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+
+    .ticket-card img{
+      display:none;
+      width:100%;
+      border-radius:16px;
+    }
+
+    .travel-text{
+      white-space:pre-wrap;
+      line-height:1.9;
+      font-size:1.06rem;
+      margin:18px 0 0;
+    }
+
+    .answers{
+      display:grid;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .answer-line{
+      width:100%;
+      min-height:52px;
+      padding:14px 16px;
+      text-align:left;
+      border:1px solid var(--glass-border);
+      border-radius:16px;
+      background:var(--glass);
+      color:#fff7ef;
+      font-size:1rem;
+      display:flex;
+      align-items:center;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:50;
+    }
+
+    .piece{
+      position:absolute;
+      top:-20px;
+      width:10px;
+      height:18px;
+      animation:fall linear forwards;
+    }
+
+    @keyframes fall{
+      to{transform:translateY(110vh) rotate(720deg);}
+    }
+
+    @media (max-width:700px){
+      body{
+        background-size:100% 100%, contain;
+        background-position:center center, center top;
+      }
+      .wrap{
+        padding:
+          max(14px, env(safe-area-inset-top))
+          14px
+          max(18px, env(safe-area-inset-bottom))
+          14px;
+      }
+      .content{padding:18px}
+      .panel{border-radius:22px}
+      .story-article{padding:20px;font-size:1rem;line-height:1.82}
+      .story-head{margin-bottom:18px}
+      .photo-slot,.float-left,.float-right{
+        float:none;
+        display:block;
+        width:100%;
+        max-width:100%;
+        margin:14px 0;
+      }
+      .top-audio{
+        position:sticky;
+        top:10px;
+        right:auto;
+        float:right;
+        margin-left:auto;
+        margin-bottom:12px;
+      }
+      .gift{
+        width:96px;
+        height:110px;
+      }
+      .gift-box{width:76px;height:60px}
+      .gift-lid{width:86px;height:16px;bottom:54px}
+      .ribbon-v{height:76px;width:12px}
+      .ribbon-h{width:76px;height:12px;bottom:23px}
+      .bow-center{bottom:67px;width:16px;height:16px}
+      .bow-left,.bow-right{
+        width:24px;height:18px;bottom:71px;border-width:4px;
+      }
+      .bow-left{left:19px}
+      .bow-right{right:19px}
+      .travel-question{font-size:1.55rem}
+      .travel-text{font-size:1rem;line-height:1.8}
+      .reveal-intro{font-size:1.02rem}
+      .btn,.direction-btn,.answer-btn{font-size:16px}
+    }
+
+    @media (max-width:430px){
+      .lock-box h1{font-size:1.8rem}
+      .lock-box p{font-size:1rem}
+      input{font-size:16px}
+      .travel-question{font-size:1.42rem}
+      .story-article{padding:18px}
+    }
+  </style>
 </head>
-
 <body>
+  <div class="confetti" id="confetti"></div>
 
-<!-- ===== LOCK ===== -->
-<section class="page active" id="page-lock">
-  <div class="wrap">
-    <div class="panel">
-      <div class="content" style="text-align:center">
-        <h1>За теб ❤️</h1>
-        <input id="passInput" placeholder="Парола">
-        <br><br>
-        <button class="btn" id="unlockBtn">Unlock</button>
-        <div id="passError"></div>
+  <section class="page active" id="page-lock">
+    <div class="wrap">
+      <div class="panel">
+        <div class="content lock-box">
+          <h1>За теб, Любов ❤️</h1>
+          <p>Въведи паролата и отключи изненадата.</p>
+          <div class="row">
+            <input id="passInput" type="password" placeholder="Парола">
+            <button class="btn gold" id="unlockBtn">Unlock</button>
+          </div>
+          <div class="error" id="passError"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== FRONT ===== -->
-<section class="page" id="page-front">
-  <div class="wrap">
-    <button class="btn" id="giftBtn">🎁</button>
-  </div>
-</section>
-
-<!-- ===== STORY ===== -->
-<section class="page" id="page-story">
-  <div class="wrap">
-    <div class="panel">
-      <div class="content">
-
-        <div class="story-article">
-          <div class="story-head">Честит Рожден Ден, Любов ❤️</div>
-          <div id="storyLayout"></div>
-        </div>
-
-        <div style="text-align:center;margin-top:20px">
-          <button class="btn" id="continueBtn">Продължи</button>
-        </div>
-
-      </div>
+  <section class="page" id="page-front">
+    <div class="front-stage">
+      <button class="gift" id="giftBtn" aria-label="Отвори подаръка">
+        <span class="gift-lid"></span>
+        <span class="gift-box"></span>
+        <span class="ribbon-v"></span>
+        <span class="ribbon-h"></span>
+        <span class="bow-center"></span>
+        <span class="bow-left"></span>
+        <span class="bow-right"></span>
+      </button>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== COMPASS PAGE ===== -->
-<section class="page" id="page-compass">
-  <div class="wrap">
-    <div class="panel">
-      <div class="content">
-
-        <h2 style="text-align:center">
-          Ако можехме да избягаме точно сега, коя посока би избрала?
-        </h2>
-
-        <div id="tempMsg" style="text-align:center;height:20px"></div>
-
-        <button class="direction-btn" data-wrong="1">Север</button>
-        <button class="direction-btn" data-wrong="1">Изток</button>
-        <button class="direction-btn" data-wrong="1">Юг</button>
-        <button class="direction-btn" id="westBtn">Запад</button>
-
-        <div id="leg1" style="display:none">
-
-          <p style="text-align:center">Тук има нещо за теб</p>
-
-          <div class="ticket-card">
-            <img id="ticket1" src="Sofia-Frankfurt.png" style="width:100%">
+  <section class="page" id="page-story">
+    <div class="wrap">
+      <div class="panel">
+        <button class="btn gold top-audio" id="audioBtn">Пусни музиката</button>
+        <div class="content">
+          <div class="story-article">
+            <div class="story-head">Честит Рожден Ден, Любов ❤️</div>
+            <div id="storyLayout" class="story-text"></div>
           </div>
 
-          <div class="travel-text">
-Сигурно се чудиш какво ще правим във Франкфурт?
+          <div class="continue-holder">
+            <div class="bottom-center">
+              <button class="btn gold" id="continueBtn">Продължи Напред</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="page-compass">
+    <div class="wrap">
+      <div class="panel">
+        <div class="content">
+          <div class="travel-question">Ако можехме да избягаме точно сега, коя посока би избрала?</div>
+          <div id="tempMsg" class="temp-msg">може би друг път</div>
+
+          <div class="direction-grid">
+            <button class="direction-btn" data-wrong="1">Север</button>
+            <button class="direction-btn" data-wrong="1">Изток</button>
+            <button class="direction-btn" data-wrong="1">Юг</button>
+            <button class="direction-btn" id="westBtn">Запад</button>
+          </div>
+
+          <div id="leg1" class="travel-block">
+            <div class="reveal-intro">Тук има нещо за теб</div>
+
+            <div class="ticket-card">
+              <img id="ticket1" src="Sofia-Frankfurt.png" alt="Sofia Frankfurt ticket">
+            </div>
+
+            <div class="travel-text">Сигурно се чудиш какво ще правим във Франкфурт?
 Тук сме за да се прехвърлим. Първо обаче въпрос по География:
-Търсим името на място с тесни улички, вековна история и залези над океана:
+Търсим името на място с тесни улички, вековна история и залези над океана:</div>
+
+            <div class="answers">
+              <div class="answer-line">Барселона</div>
+              <div class="answer-line">Валенсия</div>
+              <button class="answer-btn" id="lisbonBtn">Лисабон</button>
+            </div>
           </div>
 
-          <button class="answer-btn">Барселона</button>
-          <button class="answer-btn">Валенсия</button>
-          <button class="answer-btn" id="lisbonBtn">Лисабон</button>
+          <div id="leg2" class="travel-block">
+            <div class="travel-text">Поздравления… Следващата спирка:</div>
 
-        </div>
-
-        <div id="leg2" style="display:none">
-
-          <div class="travel-text">Поздравления… Следващата спирка:</div>
-
-          <div class="ticket-card">
-            <img id="ticket2" src="Frankfurt-Lisbon.png" style="width:100%">
+            <div class="ticket-card">
+              <img id="ticket2" src="Frankfurt-Lisbon.png" alt="Frankfurt Lisbon ticket">
+            </div>
           </div>
-
         </div>
-
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
-const PASSWORD='bugigugi39';
+  <audio id="bgMusic" loop preload="auto">
+    <source src="070.D'angelo - Lady.mp3" type="audio/mpeg">
+  </audio>
 
-const pages={
-  lock:document.getElementById('page-lock'),
-  front:document.getElementById('page-front'),
-  story:document.getElementById('page-story'),
-  compass:document.getElementById('page-compass')
-};
+  <script>
+    const PASSWORD='bugigugi39';
 
-function showPage(p){
-  Object.values(pages).forEach(x=>x.classList.remove('active'));
-  pages[p].classList.add('active');
-}
+    const storyBlocks=[
+      {type:'p',text:'Преди да стигнеш до тук и да продължиш където и да било. Искам да се замислиш само за миг … от къде си тръгнала Любов. За трудностите за победите, за трудно научените уроци за грешките…. и не на последно място за всички добри решения. Ти знаеш най-добре кои са те и то до болка.'},
+      {type:'img',src:'University.jpeg',align:'right'},
+      {type:'p',text:'За дългия път от училище, през университета, за първата ти работа в “Човешки Ресурси” - При Нинчето. Нещо което усъвършенстваш всеки ден и до днес. 39 години път -низ от кръстопъти, важни решения и избори които си направила.'},
+      {type:'img',src:'IMG_1875.jpg',align:'left'},
+      {type:'p',text:'За еманципацията ти, за целеустремеността ти, за упоритостта ти, за желанието ти да бъдеш повече всеки ден, навсякъде.'},
+      {type:'img',src:'Jump.jpeg',align:'right'},
+      {type:'p',text:'Да навсякъде, защото ти успяваш всеки ден във всяка една реалност. В тази на работа и в тази вкъщи.'},
+      {type:'img',src:'wedding1.jpeg',align:'left'},
+      {type:'p',text:'Невероятно щастлив съм да бъда част от “тази вкъщи”, тази личната.'},
+      {type:'img',src:'IMG_1780.jpg',align:'right'},
+      {type:'p',text:'Ти си неповторимо създание, което ме промени и направи по-добър човек.'},
+      {type:'img',src:'Suga.jpeg',align:'left'},
+      {type:'p',text:'Едно приключение, което бих започвал отначало, но само и единствено с теб. Заради еманципацията ти, целеустремеността ти, упоритостта ти, желанието ти да бъдеш повече всеки ден, навсякъде….защото си красива, крехка, чувствителна, искрена и обичаща, и много обичана. Защото направи нашето вече неизмеримо щастие още по-голямо и го нарекохме- Марвин.'},
+      {type:'img',src:'Marvin1.jpeg',align:'right'},
+      {type:'p',text:'Защото си сбъдната мечта като жена, майка, съпруга и партньор. Защото си най-добрият ми приятел, жената и любовта на моя живот. За да отпразнуваме този път до тук, предлагам да го направим на път.'}
+    ];
 
-document.getElementById('unlockBtn').onclick=()=>{
-  if(document.getElementById('passInput').value===PASSWORD){
-    showPage('front');
-  }
-};
+    const randomImages=['Summer.jpeg','Together.jpeg','Together2.jpeg','Togetherrr.jpeg','wedding2.jpeg'];
 
-document.getElementById('giftBtn').onclick=()=>{
-  showPage('story');
-};
+    const pages={
+      lock:document.getElementById('page-lock'),
+      front:document.getElementById('page-front'),
+      story:document.getElementById('page-story'),
+      compass:document.getElementById('page-compass')
+    };
 
-document.getElementById('continueBtn').onclick=()=>{
-  showPage('compass');
-};
+    const audio=document.getElementById('bgMusic');
+    const audioBtn=document.getElementById('audioBtn');
 
-document.querySelectorAll('[data-wrong]').forEach(btn=>{
-  btn.onclick=()=>{
-    const el=document.getElementById('tempMsg');
-    el.innerText="може би друг път";
-    setTimeout(()=>el.innerText="",3000);
-  };
-});
+    function showPage(name){
+      Object.values(pages).forEach(p=>p.classList.remove('active'));
+      pages[name].classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
 
-document.getElementById('westBtn').onclick=()=>{
-  document.getElementById('leg1').style.display='block';
-};
+    document.getElementById('unlockBtn').onclick=()=>{
+      const v=document.getElementById('passInput').value;
+      const e=document.getElementById('passError');
+      if(v===PASSWORD){
+        e.textContent='';
+        showPage('front');
+      } else {
+        e.textContent='Грешна парола.';
+      }
+    };
 
-document.getElementById('lisbonBtn').onclick=()=>{
-  document.getElementById('leg2').style.display='block';
-};
-</script>
+    document.getElementById('passInput').addEventListener('keydown',e=>{
+      if(e.key==='Enter') document.getElementById('unlockBtn').click();
+    });
 
+    audioBtn.onclick=async()=>{
+      try{
+        await audio.play();
+        audioBtn.textContent='Музиката звучи';
+        audioBtn.disabled=true;
+      }catch(e){}
+    };
+
+    let storyRendered=false;
+    document.getElementById('giftBtn').onclick=async()=>{
+      showPage('story');
+      try{
+        await audio.play();
+        audioBtn.textContent='Музиката звучи';
+        audioBtn.disabled=true;
+      }catch(e){}
+      if(!storyRendered){
+        renderStory();
+        storyRendered=true;
+      }
+    };
+
+    document.getElementById('continueBtn').onclick=()=>showPage('compass');
+
+    function renderStory(){
+      const wrap=document.getElementById('storyLayout');
+      const extra=[...randomImages]
+        .sort(()=>Math.random()-0.5)
+        .slice(0,3)
+        .map((src,i)=>({type:'img',src,align:i%2?'left':'right'}));
+
+      const blocks=[
+        ...storyBlocks.slice(0,6),
+        ...extra.slice(0,1),
+        ...storyBlocks.slice(6,10),
+        ...extra.slice(1,2),
+        ...storyBlocks.slice(10),
+        ...extra.slice(2,3)
+      ];
+
+      blocks.forEach((b,idx)=>{
+        if(b.type==='p'){
+          const p=document.createElement('p');
+          p.textContent=b.text;
+          wrap.appendChild(p);
+        } else {
+          const holder=document.createElement('div');
+          holder.className='photo-slot '+(b.align==='left'?'float-left':'float-right');
+          const img=document.createElement('img');
+          img.src=b.src;
+          holder.appendChild(img);
+          wrap.appendChild(holder);
+          setTimeout(()=>holder.classList.add('show'),200+idx*90);
+        }
+      });
+
+      const clear=document.createElement('div');
+      clear.className='clear';
+      wrap.appendChild(clear);
+    }
+
+    const tempMsg = document.getElementById('tempMsg');
+    document.querySelectorAll('[data-wrong="1"]').forEach(btn=>{
+      btn.onclick = () => {
+        tempMsg.classList.add('show');
+        clearTimeout(window._tmpMsgTimer);
+        window._tmpMsgTimer = setTimeout(() => tempMsg.classList.remove('show'), 3000);
+      };
+    });
+
+    function pixelRevealImage(imgEl, duration=4000){
+      imgEl.style.display='block';
+
+      const wrapper = imgEl.parentElement;
+      const existing = wrapper.querySelector('canvas');
+      if(existing) existing.remove();
+
+      const canvas = document.createElement('canvas');
+      wrapper.insertBefore(canvas, imgEl);
+      const ctx = canvas.getContext('2d');
+
+      return new Promise(resolve=>{
+        const source = new Image();
+        source.src = imgEl.getAttribute('src');
+
+        source.onload = () => {
+          const width = wrapper.clientWidth - 32;
+          const height = Math.round(width / (source.width / source.height));
+
+          canvas.width = width;
+          canvas.height = height;
+          canvas.style.width = '100%';
+          canvas.style.display = 'block';
+          canvas.style.borderRadius = '16px';
+
+          imgEl.style.display = 'none';
+
+          const steps = [30,24,18,14,10,8,6,4,3,2,1];
+          let start = null;
+
+          function draw(pixelSize){
+            const w = Math.max(1, Math.floor(canvas.width / pixelSize));
+            const h = Math.max(1, Math.floor(canvas.height / pixelSize));
+
+            const temp = document.createElement('canvas');
+            temp.width = w;
+            temp.height = h;
+
+            const tctx = temp.getContext('2d');
+            tctx.imageSmoothingEnabled = false;
+            tctx.drawImage(source, 0, 0, w, h);
+
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(temp, 0, 0, w, h, 0, 0, canvas.width, canvas.height);
+          }
+
+          function frame(ts){
+            if(!start) start = ts;
+            const progress = Math.min(1, (ts - start) / duration);
+            const idx = Math.min(steps.length - 1, Math.floor(progress * steps.length));
+            draw(steps[idx]);
+
+            if(progress < 1){
+              requestAnimationFrame(frame);
+            } else {
+              canvas.remove();
+              imgEl.style.display = 'block';
+              resolve();
+            }
+          }
+
+          requestAnimationFrame(frame);
+        };
+      });
+    }
+
+    function launchConfetti(){
+      const host = document.getElementById('confetti');
+      host.innerHTML = '';
+
+      const colors = ['#f0d79f', '#d06374', '#a6212c', '#fff1dc', '#c9a35a'];
+
+      for(let i = 0; i < 120; i++){
+        const piece = document.createElement('span');
+        piece.className = 'piece';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.width = (6 + Math.random() * 8) + 'px';
+        piece.style.height = (10 + Math.random() * 12) + 'px';
+        piece.style.animationDuration = (3 + Math.random() * 2) + 's';
+        piece.style.animationDelay = (Math.random() * .7) + 's';
+        host.appendChild(piece);
+      }
+
+      setTimeout(() => {
+        host.innerHTML = '';
+      }, 6500);
+    }
+
+    let westDone = false;
+    document.getElementById('westBtn').onclick = async () => {
+      if(westDone) return;
+      westDone = true;
+
+      document.getElementById('leg1').classList.add('show-now');
+      await pixelRevealImage(document.getElementById('ticket1'), 4000);
+    };
+
+    let lisbonDone = false;
+    document.getElementById('lisbonBtn').onclick = async () => {
+      if(lisbonDone) return;
+      lisbonDone = true;
+
+      document.getElementById('leg2').classList.add('show-now');
+      await pixelRevealImage(document.getElementById('ticket2'), 4000);
+      launchConfetti();
+    };
+  </script>
 </body>
 </html>
