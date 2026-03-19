@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Честит Рожден Ден, Любов ❤️</title>
+<style>
+:root{
+  --gold:#d8b066;
+  --gold2:#f0d79f;
+  --cream:#fff7ef;
+  --border:rgba(255,232,196,.25);
+  --shadow:0 20px 50px rgba(0,0,0,.28);
+  --panel1:rgba(67,31,54,.68);
+  --panel2:rgba(42,19,34,.70);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+  font-family:"Avenir Next","Trebuchet MS","Segoe UI",Arial,sans-serif;
+  color:var(--cream);
+  background:
+    linear-gradient(rgba(31,14,28,.54), rgba(31,14,28,.62)),
+    url("Frontpage.jpeg") center/cover fixed no-repeat;
+  overflow-x:hidden;
+}
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.panel{
+  width:min(1080px,100%);
+  background:linear-gradient(180deg,var(--panel1),var(--panel2));
+  border:1px solid var(--border);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  backdrop-filter:blur(8px);
+}
+.ornament:before,.ornament:after{
+  content:"";
+  position:absolute;
+  width:220px;height:220px;
+  pointer-events:none;
+  opacity:.65;
+  z-index:0;
+  background:
+    radial-gradient(circle at 40% 55%, rgba(240,215,159,.9) 0 7px, transparent 8px),
+    radial-gradient(circle at 55% 40%, rgba(216,176,102,.95) 0 13px, transparent 14px),
+    radial-gradient(circle at 70% 65%, rgba(143,129,189,.55) 0 28px, transparent 29px),
+    linear-gradient(130deg, transparent 44%, rgba(216,176,102,.85) 45%, rgba(216,176,102,.85) 47%, transparent 48%),
+    linear-gradient(35deg, transparent 44%, rgba(216,176,102,.65) 45%, rgba(216,176,102,.65) 47%, transparent 48%);
+}
+.ornament:before{top:0;left:0}
+.ornament:after{bottom:0;right:0;transform:scaleX(-1) rotate(180deg)}
+.content{position:relative;z-index:1;padding:28px}
+
+/* 1-ва страница */
+.lock-box{text-align:center;padding:42px 22px}
+.lock-box h1{margin:0 0 12px;font-size:clamp(2rem,5vw,3.4rem);color:#f8e2ba}
+.lock-box p{margin:0 0 20px;font-size:1.1rem;line-height:1.7}
+.row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+input{
+  width:min(320px,90vw);
+  padding:14px 16px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.08);
+  color:var(--cream);
+  font-size:1rem;
+  outline:none;
+}
+.btn{
+  border:none;
+  border-radius:999px;
+  padding:13px 22px;
+  font-weight:700;
+  cursor:pointer;
+  font-size:1rem;
+  transition:.18s transform ease,.18s opacity ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-gold{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#5c1f2b}
+.error{color:#ffd2d2;min-height:24px;margin-top:12px}
+.top-audio{position:absolute;top:16px;right:16px;z-index:5}
+
+/* 2-ра страница */
+.front-stage{
+  min-height:100vh;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:40px;
+}
+.gift{
+  width:110px;height:110px;border-radius:26px;
+  background:linear-gradient(180deg,#df5e6d,#a6212c);
+  border:2px solid rgba(255,238,218,.3);
+  position:relative;
+  box-shadow:0 14px 28px rgba(0,0,0,.22);
+}
+.gift:before,.gift:after{content:"";position:absolute;background:#ffdcb6;border-radius:4px}
+.gift:before{width:18px;height:86px;left:50%;top:12px;transform:translateX(-50%)}
+.gift:after{height:18px;width:86px;left:50%;top:46px;transform:translateX(-50%)}
+.gift .top{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  width:80px;height:24px;border-radius:12px 12px 8px 8px;
+  background:linear-gradient(180deg,#e56b77,#bd2e38)
+}
+.gift .bow{
+  position:absolute;top:-28px;left:50%;transform:translateX(-50%);
+  width:56px;height:24px
+}
+.gift .bow:before,.gift .bow:after{
+  content:"";position:absolute;top:0;width:24px;height:18px;
+  border:4px solid #ffdcb6;border-radius:50%
+}
+.gift .bow:before{left:0;transform:rotate(-18deg)}
+.gift .bow:after{right:0;transform:rotate(18deg)}
+
+.story-article{
+  background:rgba(255,248,240,.08);
+  border:1px solid rgba(255,236,204,.14);
+  border-radius:24px;
+  padding:28px;
+  line-height:1.95;
+  font-size:1.08rem;
+}
+.story-head{
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:800;
+  text-align:center;
+  margin:0 0 22px;
+  color:#ffe2b7;
+}
+.story-text p{margin:0 0 18px}
+.photo-slot{
+  width:min(300px,42%);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 14px 34px rgba(0,0,0,.25);
+  border:1px solid rgba(255,240,220,.16);
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+.photo-slot.show{opacity:1;transform:translateY(0)}
+.photo-slot img{display:block;width:100%;height:auto}
+.float-right{float:right;margin:8px 0 16px 20px}
+.float-left{float:left;margin:8px 20px 16px 0}
+.clear{clear:both}
+.bottom-center{display:flex;justify-content:center;margin-top:26px;clear:both}
+.continue-holder{padding-top:12px;clear:both}
+
+/* 3-та страница */
+.travel-question{
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  line-height: 1.25;
+  color: #ffe7bf;
+  text-align: center;
+  margin: 0 0 18px;
+}
+.temp-msg{
+  min-height: 28px;
+  text-align: center;
+  color: #ffe7bf;
+  opacity: 0;
+  transition: opacity .25s ease;
+  margin-bottom: 18px;
+}
+.temp-msg.show{opacity:1}
+.direction-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  max-width:420px;
+  margin:0 auto 24px;
+}
+.direction-btn{
+  width:100%;
+  padding:14px 18px;
+  border:none;
+  border-radius:16px;
+  font-size:1rem;
+  font-weight:700;
+  cursor:pointer;
+}
+.direction-btn.primary{
+  background:linear-gradient(180deg,#f0d79f,#d8b066);
+  color:#5b2330;
+}
+.direction-btn.west{
+  background:linear-gradient(180deg,#d85f6c,#a92631);
+  color:#fff;
+}
+.travel-block{
+  display:none;
+  margin-top:16px;
+}
+.travel-block.show-now{display:block}
+.ticket-card{
+  background: rgba(255,248,240,.08);
+  border: 1px solid rgba(255,236,204,.14);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.22);
+}
+.ticket-card{margin-top:18px}
+.ticket-card img{
+  display:none;
+  width:100%;
+  border-radius:16px;
+}
+.travel-text{
+  white-space:pre-wrap;
+  line-height:1.9;
+  font-size:1.06rem;
+  margin:18px 0 0;
+}
+.answers{
+  display:grid;
+  gap:12px;
+  margin-top:16px;
+}
+.answer-line{
+  width:100%;
+  padding:14px 16px;
+  text-align:left;
+  border:1px solid rgba(255,236,204,.14);
+  border-radius:16px;
+  background:rgba(255,248,240,.1);
+  color:#fff7ef;
+  font-size:1rem;
+}
+.answer-btn{
+  width:100%;
+  padding:14px 16px;
+  text-align:left;
+  border:1px solid rgba(255,236,204,.14);
+  border-radius:16px;
+  background:rgba(255,248,240,.1);
+  color:#fff7ef;
+  font-size:1rem;
+  cursor:pointer;
+}
+.answer-btn.correct{
+  background: linear-gradient(180deg, #f0d79f, #d8b066);
+  color: #5b2330;
+  font-weight:700;
+}
+.confetti{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 50;
+}
+.piece{
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 18px;
+  animation: fall linear forwards;
+}
+@keyframes fall{
+  to{transform: translateY(110vh) rotate(720deg);}
+}
+
+@media (max-width:700px){
+  .content{padding:18px}
+  .photo-slot,.float-left,.float-right{float:none;display:block;width:100%;max-width:100%;margin:14px 0}
+}
+</style>
+</head>
+<body>
+<div class="confetti" id="confetti"></div>
+
+<section class="page active" id="page-lock">
+  <div class="wrap">
+    <div class="panel ornament">
+      <div class="content lock-box">
+        <h1>За теб, Любов ❤️</h1>
+        <p>Въведи паролата и отключи изненадата.</p>
+        <div class="row">
+          <input id="passInput" type="password" placeholder="Парола">
+          <button class="btn btn-gold" id="unlockBtn">Unlock</button>
+        </div>
+        <div class="error" id="passError"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-front">
+  <div class="front-stage">
+    <button class="gift" id="giftBtn" aria-label="Отвори подаръка">
+      <span class="top"></span>
+      <span class="bow"></span>
+    </button>
+  </div>
+</section>
+
+<section class="page" id="page-story">
+  <div class="wrap">
+    <div class="panel ornament">
+      <button class="btn btn-gold top-audio" id="audioBtn">Пусни музиката</button>
+      <div class="content">
+        <div class="story-article">
+          <div class="story-head">Честит Рожден Ден, Любов ❤️</div>
+          <div id="storyLayout" class="story-text"></div>
+        </div>
+        <div class="continue-holder">
+          <div class="bottom-center">
+            <button class="btn btn-gold" id="continueBtn">Продължи Напред</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-compass">
+  <div class="wrap">
+    <div class="panel ornament">
+      <div class="content">
+        <div class="travel-question">Ако можехме да избягаме точно сега, коя посока би избрала?</div>
+        <div id="tempMsg" class="temp-msg">може би друг път</div>
+
+        <div class="direction-grid">
+          <button class="direction-btn primary" data-wrong="1">Север</button>
+          <button class="direction-btn primary" data-wrong="1">Изток</button>
+          <button class="direction-btn primary" data-wrong="1">Юг</button>
+          <button class="direction-btn west" id="westBtn">Запад</button>
+        </div>
+
+        <div id="leg1" class="travel-block">
+          <div class="ticket-card">
+            <img id="ticket1" src="Sofia-Frankfurt.png" alt="Sofia Frankfurt ticket">
+          </div>
+
+          <div class="travel-text">Сигурно се чудиш какво ще правим във Франкфурт?
+Тук сме за да се прехвърлим. Първо обаче въпрос по География:
+Търсим името на място с тесни улички, вековна история и залези над океана:</div>
+
+          <div class="answers">
+            <div class="answer-line">Барселона</div>
+            <div class="answer-line">Валенсия</div>
+            <button class="answer-btn correct" id="lisbonBtn">Лисабон</button>
+          </div>
+        </div>
+
+        <div id="leg2" class="travel-block">
+          <div class="travel-text">Поздравления… Следващата спирка:</div>
+          <div class="ticket-card">
+            <img id="ticket2" src="Frankfurt-Lisbon.png" alt="Frankfurt Lisbon ticket">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="070.D'angelo - Lady.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const PASSWORD='bugigugi39';
+const storyBlocks=[
+ {type:'p',text:'Преди да стигнеш до тук и да продължиш където и да било. Искам да се замислиш само за миг … от къде си тръгнала Любов. За трудностите за победите, за трудно научените уроци за грешките…. и не на последно място за всички добри решения. Ти знаеш най-добре кои са те и то до болка.'},
+ {type:'img',src:'University.jpeg',align:'right'},
+ {type:'p',text:'За дългия път от училище, през университета, за първата ти работа в “Човешки Ресурси” - При Нинчето. Нещо което усъвършенстваш всеки ден и до днес. 39 години път -низ от кръстопъти, важни решения и избори които си направила.'},
+ {type:'img',src:'IMG_1875.jpg',align:'left'},
+ {type:'p',text:'За еманципацията ти, за целеустремеността ти, за упоритостта ти, за желанието ти да бъдеш повече всеки ден, навсякъде.'},
+ {type:'img',src:'Jump.jpeg',align:'right'},
+ {type:'p',text:'Да навсякъде, защото ти успяваш всеки ден във всяка една реалност. В тази на работа и в тази вкъщи.'},
+ {type:'img',src:'wedding1.jpeg',align:'left'},
+ {type:'p',text:'Невероятно щастлив съм да бъда част от “тази вкъщи”, тази личната.'},
+ {type:'img',src:'IMG_1780.jpg',align:'right'},
+ {type:'p',text:'Ти си неповторимо създание, което ме промени и направи по-добър човек.'},
+ {type:'img',src:'Suga.jpeg',align:'left'},
+ {type:'p',text:'Едно приключение, което бих започвал отначало, но само и единствено с теб. Заради еманципацията ти, целеустремеността ти, упоритостта ти, желанието ти да бъдеш повече всеки ден, навсякъде….защото си красива, крехка, чувствителна, искрена и обичаща, и много обичана. Защото направи нашето вече неизмеримо щастие още по-голямо и го нарекохме- Марвин.'},
+ {type:'img',src:'Marvin1.jpeg',align:'right'},
+ {type:'p',text:'Защото си сбъдната мечта като жена, майка, съпруга и партньор. Защото си най-добрият ми приятел, жената и любовта на моя живот. За да отпразнуваме този път до тук, предлагам да го направим на път.'}
+];
+const randomImages=['Summer.jpeg','Together.jpeg','Together2.jpeg','Togetherrr.jpeg','wedding2.jpeg'];
+
+const pages={
+  lock:document.getElementById('page-lock'),
+  front:document.getElementById('page-front'),
+  story:document.getElementById('page-story'),
+  compass:document.getElementById('page-compass')
+};
+
+const audio=document.getElementById('bgMusic');
+const audioBtn=document.getElementById('audioBtn');
+
+function showPage(name){
+  Object.values(pages).forEach(p=>p.classList.remove('active'));
+  pages[name].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.getElementById('unlockBtn').onclick=()=>{
+  const v=document.getElementById('passInput').value;
+  const e=document.getElementById('passError');
+  if(v===PASSWORD){
+    e.textContent='';
+    showPage('front');
+  } else e.textContent='Грешна парола.';
+};
+
+document.getElementById('passInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter') document.getElementById('unlockBtn').click();
+});
+
+audioBtn.onclick=async()=>{
+  try{
+    await audio.play();
+    audioBtn.textContent='Музиката звучи';
+    audioBtn.disabled=true;
+  }catch(e){}
+};
+
+let storyRendered=false;
+document.getElementById('giftBtn').onclick=async()=>{
+  showPage('story');
+  try{
+    await audio.play();
+    audioBtn.textContent='Музиката звучи';
+    audioBtn.disabled=true;
+  }catch(e){}
+  if(!storyRendered){
+    renderStory();
+    storyRendered=true;
+  }
+};
+
+document.getElementById('continueBtn').onclick=()=>showPage('compass');
+
+function renderStory(){
+  const wrap=document.getElementById('storyLayout');
+  const extra=[...randomImages].sort(()=>Math.random()-0.5).slice(0,3).map((src,i)=>({type:'img',src,align:i%2?'left':'right'}));
+  const blocks=[...storyBlocks.slice(0,6),...extra.slice(0,1),...storyBlocks.slice(6,10),...extra.slice(1,2),...storyBlocks.slice(10),...extra.slice(2,3)];
+  blocks.forEach((b,idx)=>{
+    if(b.type==='p'){
+      const p=document.createElement('p');
+      p.textContent=b.text;
+      wrap.appendChild(p);
+    } else {
+      const holder=document.createElement('div');
+      holder.className='photo-slot '+(b.align==='left'?'float-left':'float-right');
+      const img=document.createElement('img');
+      img.src=b.src;
+      holder.appendChild(img);
+      wrap.appendChild(holder);
+      setTimeout(()=>holder.classList.add('show'),200+idx*90);
+    }
+  });
+  const clear=document.createElement('div');
+  clear.className='clear';
+  wrap.appendChild(clear);
+}
+
+const tempMsg = document.getElementById('tempMsg');
+document.querySelectorAll('[data-wrong="1"]').forEach(btn=>{
+  btn.onclick = () => {
+    tempMsg.classList.add('show');
+    clearTimeout(window._tmpMsgTimer);
+    window._tmpMsgTimer = setTimeout(() => tempMsg.classList.remove('show'), 3000);
+  };
+});
+
+function pixelRevealImage(imgEl, duration=4000){
+  imgEl.style.display='block';
+
+  const wrapper = imgEl.parentElement;
+  const existing = wrapper.querySelector('canvas');
+  if(existing) existing.remove();
+
+  const canvas = document.createElement('canvas');
+  wrapper.insertBefore(canvas, imgEl);
+  const ctx = canvas.getContext('2d');
+
+  return new Promise(resolve=>{
+    const source = new Image();
+    source.src = imgEl.getAttribute('src');
+
+    source.onload = () => {
+      const width = wrapper.clientWidth - 32;
+      const height = Math.round(width / (source.width / source.height));
+
+      canvas.width = width;
+      canvas.height = height;
+      canvas.style.width = '100%';
+      canvas.style.display = 'block';
+      canvas.style.borderRadius = '16px';
+
+      imgEl.style.display = 'none';
+
+      const steps = [30,24,18,14,10,8,6,4,3,2,1];
+      let start = null;
+
+      function draw(pixelSize){
+        const w = Math.max(1, Math.floor(canvas.width / pixelSize));
+        const h = Math.max(1, Math.floor(canvas.height / pixelSize));
+
+        const temp = document.createElement('canvas');
+        temp.width = w;
+        temp.height = h;
+
+        const tctx = temp.getContext('2d');
+        tctx.imageSmoothingEnabled = false;
+        tctx.drawImage(source, 0, 0, w, h);
+
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(temp, 0, 0, w, h, 0, 0, canvas.width, canvas.height);
+      }
+
+      function frame(ts){
+        if(!start) start = ts;
+        const progress = Math.min(1, (ts - start) / duration);
+        const idx = Math.min(steps.length - 1, Math.floor(progress * steps.length));
+        draw(steps[idx]);
+
+        if(progress < 1){
+          requestAnimationFrame(frame);
+        } else {
+          canvas.remove();
+          imgEl.style.display = 'block';
+          resolve();
+        }
+      }
+
+      requestAnimationFrame(frame);
+    };
+  });
+}
+
+function launchConfetti(){
+  const host = document.getElementById('confetti');
+  host.innerHTML = '';
+
+  const colors = ['#f0d79f', '#d06374', '#a6212c', '#fff1dc', '#c9a35a'];
+
+  for(let i = 0; i < 120; i++){
+    const piece = document.createElement('span');
+    piece.className = 'piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.width = (6 + Math.random() * 8) + 'px';
+    piece.style.height = (10 + Math.random() * 12) + 'px';
+    piece.style.animationDuration = (3 + Math.random() * 2) + 's';
+    piece.style.animationDelay = (Math.random() * .7) + 's';
+    host.appendChild(piece);
+  }
+
+  setTimeout(() => {
+    host.innerHTML = '';
+  }, 6500);
+}
+
+let westDone = false;
+document.getElementById('westBtn').onclick = async () => {
+  if(westDone) return;
+  westDone = true;
+
+  document.getElementById('leg1').classList.add('show-now');
+  await pixelRevealImage(document.getElementById('ticket1'), 4000);
+};
+
+let lisbonDone = false;
+document.getElementById('lisbonBtn').onclick = async () => {
+  if(lisbonDone) return;
+  lisbonDone = true;
+
+  document.getElementById('leg2').classList.add('show-now');
+  await pixelRevealImage(document.getElementById('ticket2'), 4000);
+  launchConfetti();
+};
+</script>
+</body>
+</html>
