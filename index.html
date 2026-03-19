@@ -11,17 +11,22 @@
   --cream:#fff7ef;
   --border:rgba(255,232,196,.25);
   --shadow:0 20px 50px rgba(0,0,0,.28);
-  --panel1:rgba(67,31,54,.68);
-  --panel2:rgba(42,19,34,.70);
+  --panel1:rgba(67,31,54,.78);
+  --panel2:rgba(42,19,34,.78);
+  --themeSide:#2b1627;
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%}
 body{
   font-family:"Avenir Next","Trebuchet MS","Segoe UI",Arial,sans-serif;
   color:var(--cream);
-  background:
-    linear-gradient(rgba(31,14,28,.54), rgba(31,14,28,.62)),
-    url("Frontpage.jpeg") center/cover fixed no-repeat;
+  background-color: var(--themeSide);
+  background-image:
+    linear-gradient(rgba(31,14,28,.34), rgba(31,14,28,.42)),
+    url("Frontpage.jpeg");
+  background-repeat:no-repeat,no-repeat;
+  background-position:center center, center center;
+  background-size:100% 100%, contain;
   overflow-x:hidden;
 }
 .page{display:none;min-height:100vh}
@@ -184,20 +189,27 @@ input{
   font-size:1rem;
   font-weight:700;
   cursor:pointer;
-}
-.direction-btn.primary{
-  background:linear-gradient(180deg,#f0d79f,#d8b066);
-  color:#5b2330;
+  background:rgba(255,248,240,.14);
+  color:#fff7ef;
+  border:1px solid rgba(255,236,204,.14);
 }
 .direction-btn.west{
-  background:linear-gradient(180deg,#d85f6c,#a92631);
-  color:#fff;
+  background:rgba(255,248,240,.14);
+  color:#fff7ef;
+  border:1px solid rgba(255,236,204,.14);
 }
 .travel-block{
   display:none;
   margin-top:16px;
 }
 .travel-block.show-now{display:block}
+.reveal-intro{
+  text-align:center;
+  color:#ffe7bf;
+  font-size:1.12rem;
+  line-height:1.8;
+  margin:8px 0 6px;
+}
 .ticket-card{
   background: rgba(255,248,240,.08);
   border: 1px solid rgba(255,236,204,.14);
@@ -244,9 +256,9 @@ input{
   cursor:pointer;
 }
 .answer-btn.correct{
-  background: linear-gradient(180deg, #f0d79f, #d8b066);
-  color: #5b2330;
-  font-weight:700;
+  background:rgba(255,248,240,.1);
+  color:#fff7ef;
+  font-weight:400;
 }
 .confetti{
   position: fixed;
@@ -267,6 +279,9 @@ input{
 }
 
 @media (max-width:700px){
+  body{
+    background-size:100% 100%, cover;
+  }
   .content{padding:18px}
   .photo-slot,.float-left,.float-right{float:none;display:block;width:100%;max-width:100%;margin:14px 0}
 }
@@ -327,13 +342,15 @@ input{
         <div id="tempMsg" class="temp-msg">може би друг път</div>
 
         <div class="direction-grid">
-          <button class="direction-btn primary" data-wrong="1">Север</button>
-          <button class="direction-btn primary" data-wrong="1">Изток</button>
-          <button class="direction-btn primary" data-wrong="1">Юг</button>
+          <button class="direction-btn" data-wrong="1">Север</button>
+          <button class="direction-btn" data-wrong="1">Изток</button>
+          <button class="direction-btn" data-wrong="1">Юг</button>
           <button class="direction-btn west" id="westBtn">Запад</button>
         </div>
 
         <div id="leg1" class="travel-block">
+          <div class="reveal-intro">Тук има нещо за теб</div>
+
           <div class="ticket-card">
             <img id="ticket1" src="Sofia-Frankfurt.png" alt="Sofia Frankfurt ticket">
           </div>
@@ -582,3 +599,7 @@ document.getElementById('lisbonBtn').onclick = async () => {
 </script>
 </body>
 </html>
+"""
+
+Path("/mnt/data/index.html").write_text(html, encoding="utf-8")
+print("/mnt/data/index.html")
