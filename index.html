@@ -2,7 +2,7 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Честит Рожден Ден, Любов ❤️</title>
 <style>
 :root{
@@ -28,10 +28,19 @@ body{
   background-position:center center, center center;
   background-size:100% 100%, contain;
   overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
-.page{display:none;min-height:100vh}
+.page{display:none;min-height:100vh;min-height:100svh}
 .page.active{display:block}
-.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.wrap{
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
 .panel{
   width:min(1080px,100%);
   background:linear-gradient(180deg,var(--panel1),var(--panel2));
@@ -62,7 +71,11 @@ body{
 
 /* 1-ва страница */
 .lock-box{text-align:center;padding:42px 22px}
-.lock-box h1{margin:0 0 12px;font-size:clamp(2rem,5vw,3.4rem);color:#f8e2ba}
+.lock-box h1{
+  margin:0 0 12px;
+  font-size:clamp(2rem,5vw,3.4rem);
+  color:#f8e2ba;
+}
 .lock-box p{margin:0 0 20px;font-size:1.1rem;line-height:1.7}
 .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 input{
@@ -87,42 +100,124 @@ input{
 .btn:hover{transform:translateY(-1px)}
 .btn-gold{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#5c1f2b}
 .error{color:#ffd2d2;min-height:24px;margin-top:12px}
-.top-audio{position:absolute;top:16px;right:16px;z-index:5}
+.top-audio{
+  position:absolute;
+  top:16px;
+  right:16px;
+  z-index:5;
+}
 
 /* 2-ра страница */
 .front-stage{
   min-height:100vh;
+  min-height:100svh;
   display:flex;
   align-items:flex-end;
   justify-content:center;
-  padding:40px;
+  padding:40px 20px max(40px, env(safe-area-inset-bottom));
+}
+.gift-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .gift{
-  width:110px;height:110px;border-radius:26px;
-  background:linear-gradient(180deg,#df5e6d,#a6212c);
-  border:2px solid rgba(255,238,218,.3);
   position:relative;
-  box-shadow:0 14px 28px rgba(0,0,0,.22);
+  width:110px;
+  height:126px;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  padding:0;
+  appearance:none;
+  -webkit-tap-highlight-color:transparent;
 }
-.gift:before,.gift:after{content:"";position:absolute;background:#ffdcb6;border-radius:4px}
-.gift:before{width:18px;height:86px;left:50%;top:12px;transform:translateX(-50%)}
-.gift:after{height:18px;width:86px;left:50%;top:46px;transform:translateX(-50%)}
-.gift .top{
-  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
-  width:80px;height:24px;border-radius:12px 12px 8px 8px;
-  background:linear-gradient(180deg,#e56b77,#bd2e38)
+.gift:hover{transform:translateY(-2px)}
+.gift-box{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:88px;
+  height:70px;
+  border-radius:10px;
+  background:
+    linear-gradient(180deg,#d54958 0%, #b92938 52%, #8f1f2c 100%);
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,.18),
+    inset 0 -6px 12px rgba(0,0,0,.18),
+    0 14px 28px rgba(0,0,0,.28);
+  border:1px solid rgba(255,240,220,.22);
 }
-.gift .bow{
-  position:absolute;top:-28px;left:50%;transform:translateX(-50%);
-  width:56px;height:24px
+.gift-lid{
+  position:absolute;
+  left:50%;
+  bottom:63px;
+  transform:translateX(-50%);
+  width:98px;
+  height:18px;
+  border-radius:10px;
+  background:
+    linear-gradient(180deg,#e46371 0%, #bf3140 58%, #9c2130 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.18),
+    0 8px 16px rgba(0,0,0,.18);
+  border:1px solid rgba(255,240,220,.2);
 }
-.gift .bow:before,.gift .bow:after{
-  content:"";position:absolute;top:0;width:24px;height:18px;
-  border:4px solid #ffdcb6;border-radius:50%
+.ribbon-v{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:14px;
+  height:88px;
+  border-radius:8px;
+  background:linear-gradient(180deg,#ffe6bf 0%, #efc988 48%, #dca85b 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45);
 }
-.gift .bow:before{left:0;transform:rotate(-18deg)}
-.gift .bow:after{right:0;transform:rotate(18deg)}
+.ribbon-h{
+  position:absolute;
+  left:50%;
+  bottom:27px;
+  transform:translateX(-50%);
+  width:88px;
+  height:14px;
+  border-radius:8px;
+  background:linear-gradient(180deg,#ffe6bf 0%, #efc988 48%, #dca85b 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45);
+}
+.bow-center{
+  position:absolute;
+  left:50%;
+  bottom:77px;
+  transform:translateX(-50%);
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:linear-gradient(180deg,#ffe8c4 0%, #eabf77 100%);
+  z-index:2;
+  box-shadow:0 4px 10px rgba(0,0,0,.18);
+}
+.bow-left,
+.bow-right{
+  position:absolute;
+  bottom:82px;
+  width:30px;
+  height:22px;
+  border:5px solid #f0c980;
+  border-radius:50%;
+  z-index:1;
+}
+.bow-left{
+  left:20px;
+  transform:rotate(-20deg);
+}
+.bow-right{
+  right:20px;
+  transform:rotate(20deg);
+}
 
+/* текстова страница */
 .story-article{
   background:rgba(255,248,240,.08);
   border:1px solid rgba(255,236,204,.14);
@@ -183,6 +278,7 @@ input{
 }
 .direction-btn{
   width:100%;
+  min-height:52px;
   padding:14px 18px;
   border:none;
   border-radius:16px;
@@ -192,6 +288,7 @@ input{
   background:rgba(255,248,240,.14);
   color:#fff7ef;
   border:1px solid rgba(255,236,204,.14);
+  -webkit-tap-highlight-color:transparent;
 }
 .direction-btn.west{
   background:rgba(255,248,240,.14);
@@ -236,6 +333,7 @@ input{
 }
 .answer-line{
   width:100%;
+  min-height:52px;
   padding:14px 16px;
   text-align:left;
   border:1px solid rgba(255,236,204,.14);
@@ -243,9 +341,12 @@ input{
   background:rgba(255,248,240,.1);
   color:#fff7ef;
   font-size:1rem;
+  display:flex;
+  align-items:center;
 }
 .answer-btn{
   width:100%;
+  min-height:52px;
   padding:14px 16px;
   text-align:left;
   border:1px solid rgba(255,236,204,.14);
@@ -254,6 +355,7 @@ input{
   color:#fff7ef;
   font-size:1rem;
   cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
 }
 .answer-btn.correct{
   background:rgba(255,248,240,.1);
@@ -278,12 +380,64 @@ input{
   to{transform: translateY(110vh) rotate(720deg);}
 }
 
+/* iPhone / mobile optimization */
 @media (max-width:700px){
   body{
-    background-size:100% 100%, cover;
+    background-size:100% 100%, contain;
+    background-position:center center, center top;
+  }
+  .wrap{
+    padding:
+      max(14px, env(safe-area-inset-top))
+      14px
+      max(18px, env(safe-area-inset-bottom))
+      14px;
   }
   .content{padding:18px}
-  .photo-slot,.float-left,.float-right{float:none;display:block;width:100%;max-width:100%;margin:14px 0}
+  .panel{border-radius:22px}
+  .story-article{padding:20px;font-size:1rem;line-height:1.82}
+  .story-head{margin-bottom:18px}
+  .photo-slot,.float-left,.float-right{
+    float:none;
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin:14px 0;
+  }
+  .top-audio{
+    position:sticky;
+    top:10px;
+    right:auto;
+    float:right;
+    margin-left:auto;
+    margin-bottom:12px;
+  }
+  .gift{
+    width:96px;
+    height:110px;
+  }
+  .gift-box{width:76px;height:60px}
+  .gift-lid{width:86px;height:16px;bottom:54px}
+  .ribbon-v{height:76px;width:12px}
+  .ribbon-h{width:76px;height:12px;bottom:23px}
+  .bow-center{bottom:67px;width:16px;height:16px}
+  .bow-left,.bow-right{
+    width:24px;height:18px;bottom:71px;border-width:4px;
+  }
+  .bow-left{left:19px}
+  .bow-right{right:19px}
+  .travel-question{font-size:1.55rem}
+  .travel-text{font-size:1rem;line-height:1.8}
+  .reveal-intro{font-size:1.02rem}
+  .btn,.direction-btn,.answer-btn{font-size:16px}
+}
+
+@media (max-width:430px){
+  .lock-box h1{font-size:1.8rem}
+  .lock-box p{font-size:1rem}
+  input{font-size:16px}
+  .travel-question{font-size:1.42rem}
+  .story-article{padding:18px}
 }
 </style>
 </head>
@@ -308,10 +462,17 @@ input{
 
 <section class="page" id="page-front">
   <div class="front-stage">
-    <button class="gift" id="giftBtn" aria-label="Отвори подаръка">
-      <span class="top"></span>
-      <span class="bow"></span>
-    </button>
+    <div class="gift-wrap">
+      <button class="gift" id="giftBtn" aria-label="Отвори подаръка">
+        <span class="gift-lid"></span>
+        <span class="gift-box"></span>
+        <span class="ribbon-v"></span>
+        <span class="ribbon-h"></span>
+        <span class="bow-center"></span>
+        <span class="bow-left"></span>
+        <span class="bow-right"></span>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -459,6 +620,7 @@ function renderStory(){
   const wrap=document.getElementById('storyLayout');
   const extra=[...randomImages].sort(()=>Math.random()-0.5).slice(0,3).map((src,i)=>({type:'img',src,align:i%2?'left':'right'}));
   const blocks=[...storyBlocks.slice(0,6),...extra.slice(0,1),...storyBlocks.slice(6,10),...extra.slice(1,2),...storyBlocks.slice(10),...extra.slice(2,3)];
+
   blocks.forEach((b,idx)=>{
     if(b.type==='p'){
       const p=document.createElement('p');
@@ -474,6 +636,7 @@ function renderStory(){
       setTimeout(()=>holder.classList.add('show'),200+idx*90);
     }
   });
+
   const clear=document.createElement('div');
   clear.className='clear';
   wrap.appendChild(clear);
@@ -599,7 +762,3 @@ document.getElementById('lisbonBtn').onclick = async () => {
 </script>
 </body>
 </html>
-"""
-
-Path("/mnt/data/index.html").write_text(html, encoding="utf-8")
-print("/mnt/data/index.html")
